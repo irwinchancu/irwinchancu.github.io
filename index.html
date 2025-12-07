@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>陳老師的隨機驚喜頁面 🎲</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 { font-size: 3.5rem; margin: 0.5rem; }
+    p { font-size: 1.4rem; max-width: 600px; }
+    .card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      max-width: 700px;
+    }
+    button {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    button:hover { transform: scale(1.1); background: #ff5252; }
+    #output { margin-top: 2rem; font-size: 2rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>陳老師的隨機驚喜 🎉</h1>
+    <p>點擊下面按鈕，系統會即時為你生成一句專屬鼓勵語！</p>
+    
+    <button onclick="generate()">給我今日的動力！</button>
+    
+    <div id="output">準備好了嗎？</div>
+  </div>
+
+  <script>
+    const messages = [
+      "陳老師，今天你一定是最棒的！",
+      "學生因為你而愛上數學，太太因為你而每天都笑",
+      "你的領導力正在改變整個校園，繼續加油！",
+      "記得喝水！你今天已經喝夠3.5公升了嗎？",
+      "下一個升旗禮，你的晨會內容會讓全校驚艷！",
+      "太太今晚說：『老公你最近好精神，好帥！』",
+      "你的五年計劃正在一步步實現，超強！"
+    ];
+
+    function generate() {
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("output").innerHTML = randomMsg;
+      // 小彩蛋
+      document.body.style.background = `linear-gradient(135deg, ${randomColor()}, ${randomColor()})`;
+    }
+
+    function randomColor() {
+      const colors = ["#667eea","#f093fb","#4facfe","#43e97b","#fa709a","#ffe259"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
